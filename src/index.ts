@@ -1,17 +1,11 @@
-class Animal {
-  name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
+type Generic<T> = {
+  prop: T extends string ? string : T extends number ? number : undefined
 }
 
-class Dog extends Animal {
-  bark() {
-    console.log("Bark!");
-  }
+type Custom = {
+  age: number
+} & string
+
+const a: Generic<null> = {
+  prop: undefined
 }
-
-const dog = new Dog("Molly");
-
-dog.bark();
