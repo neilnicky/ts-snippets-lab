@@ -1,5 +1,17 @@
-const greet = (name: string) => {
-  console.log(`Hello, ${name}!`);
-};
+class Animal {
+  name: string;
 
-greet("Hey, Neil");
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log("Bark!");
+  }
+}
+
+const dog = new Dog("Molly");
+
+dog.bark();
