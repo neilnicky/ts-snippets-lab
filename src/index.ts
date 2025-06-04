@@ -1,11 +1,9 @@
-type Generic<T> = {
-  prop: T extends string ? string : T extends number ? number : undefined
-}
+type CustomReturnType<T extends (...args: any[]) => any> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : never;
 
-type Custom = {
-  age: number
-} & string
+type CustomAwaited<T> = T extends Promise<infer P> ? P : T;
 
-const a: Generic<null> = {
-  prop: undefined
-}
+type A = CustomAwaited<CustomReturnType<typeof fetch>>;
